@@ -1,5 +1,9 @@
 package net.lowsketch.tutorialmod;
 
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.lowsketch.tutorialmod.block.ModBlocks;
+import net.lowsketch.tutorialmod.item.ModItems;
+import net.lowsketch.tutorialmod.item.ModItemsGroups;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -13,7 +17,11 @@ public class TutorialMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModItems.registerModItems();
 
-		LOGGER.info("Hello Fabric!");
+		ModItemsGroups.registerItemGroups();
+		ModBlocks.registerModBlocks();
+
+		FuelRegistry.INSTANCE.add(ModItems.RUBY, 200);
 	}
 }
